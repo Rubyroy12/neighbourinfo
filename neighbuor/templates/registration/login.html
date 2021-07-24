@@ -1,0 +1,36 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-5">
+            <hr>
+
+            <h2>Sign In</h2>
+
+            <form action="" method="post" novalidate>
+                {% csrf_token%}
+                {% bootstrap_form form layout='inline' %}
+                <button type="submit" class="btn btn-info btn-sm D-block mx-auto"> Log In</button><br>
+            </form>
+            <br>
+
+            <a href="" class="D-block mx-auto mb-3">Forgot password? </a>
+            <div class="card-body mt-3 mb-3 mr-2 ml-4">
+                Don't have an account? <a href="/accounts/register">Sign up</a>
+            </div>
+            <hr style="border: 2px solid aqua">
+        </div>
+        
+        <div class="col-md-3"></div>
+
+    </div>
+   
+</div>
+</div>
+
+{% endblock %}
