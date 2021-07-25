@@ -26,10 +26,40 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Neighbuorhood</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-
+                <div class="col-sm-6 col-md-6" style="display: inline-flex; margin-right: 50px;">
+                    {% if user.is_authenticated %}
+                   
+                  
+                  
+                   
+            
+                    <div class="instaicon like" style="display: inline;" class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-default"
+                            data-toggle="dropdown" role="button" aria-expanded="false">Submit</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" style="color: inherit;">
+                                    </span>Profile</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'index'%}" style="color: inherit;">Home</a>
+                            </li>
+                            <li>
+                                <a href="/accounts/password_change" style="color: inherit;">Change Password</a>
+                            </li>
+                            
+                            <li>
+                                <a href="/accounts/logout" style="color: inherit;">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    {% else %}
+                    <a class='btn btn-default' href="/accounts/login">
+                        <p>Login</p>
+                    </a>
+                    {% endif %}
+                </div>  
             </ul>
         </div>
     </nav>
