@@ -23,7 +23,7 @@ class BusinessForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta: 
         model=Post
-        fields = ('title','post')
+        fields = ('title','post','image')
 class LocationForm(forms.ModelForm):
     class Meta: 
         model=Location

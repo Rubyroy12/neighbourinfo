@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 urlpatterns=[
     path('',views.index,name = 'index'),
     path('accounts/profile/<str:username>/',views.profile, name = 'profile'),
+    path('neighbuor/',views.update_neighbourhood, name='neighbor'),
+    path('newpost/', views.newpost, name = 'post')
    
 ]
 if settings.DEBUG:

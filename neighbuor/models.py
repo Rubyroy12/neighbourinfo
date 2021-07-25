@@ -8,8 +8,6 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',null=True)
-    photo = CloudinaryField('image')
-    bio = models.CharField(max_length=300)
     name = models.CharField(blank=True, max_length=120)
 
     @receiver(post_save, sender=User)
@@ -102,6 +100,7 @@ class Business(models.Model):
 class Post(models.Model):
     title=models.CharField(max_length= 100)
     post= models.TextField(max_length=300)
+    image = CloudinaryField('image')
     posted= models.DateField(auto_now_add=True)
 
   

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import BusinessForm,PostForm,LocationForm,UpdateUserProfileForm,UpdateUserForm
+from .forms import BusinessForm,PostForm,LocationForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile
@@ -38,3 +38,27 @@ def profile(request, username):
         
     }
     return render(request, 'profile.html', params)
+
+def update_neighbourhood(request):
+    if request.method == 'POST':
+        form = NeighbourhoodForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.save()
+            return redirect('/',)
+    else:
+        form= NeighbourhoodForm()
+    return render(request, 'neighbourinfo.html', {'form': form})
+
+def newpost(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.save()
+            return redirect('/',)
+    else:
+        form= PostForm()
+   
+    return render(request, 'newpost.html', {'form': form})
+        

@@ -1,20 +1,18 @@
 {% extends "base.html"%}
 {% load bootstrap4 %}
-{% block content %}
-<div class="container-fluid">
+{% load static %}
+{% block content%}
+<div class="container">
 
-<div class="head" style="height: 30vh;background-color: aquamarine;">
+    <h2>Create Post</h2>
 
-  
-
-
-</div>
     <hr>
     <form class="form" action="" method="post" novalidate enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-7">
+
                 {% bootstrap_form form layout='block' %}
                 <button type="submit" class="btn btn-sm btn-info" style="margin-top:10px; margin-left:5px">post</button>
             </div>
@@ -24,6 +22,12 @@
 
         </div>
     </form>
+
+
+
+
+
+
 </div>
 
 
