@@ -3,6 +3,8 @@ from django.db.migrations.operations import fields
 from .models import Profile,Business,Post,Location,Neighbourhood
 from django.contrib.auth.models import User
 
+from neighbuor import models
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
@@ -11,13 +13,17 @@ class ProfileForm(forms.ModelForm):
 class NeighbourhoodForm(forms.ModelForm):
     class Meta: 
         model= Neighbourhood
-        fields = ('name','name','locations','occupants')
+        fields = ('name','occupants')
 
-class Business(forms.ModelForm):
+class BusinessForm(forms.ModelForm):
     class Meta: 
         model=Business
         fields = ('name','email')
-class Post(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta: 
         model=Post
         fields = ('title','post')
+class LocationForm(forms.ModelForm):
+    class Meta: 
+        model=Location
+        fields = ('name',)

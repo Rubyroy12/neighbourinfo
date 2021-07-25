@@ -7,6 +7,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',null=True)
    
   
+class Location(models.Model):
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    name = models.CharField(max_length = 50)
 
 class Neighbourhood(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
@@ -30,9 +33,6 @@ class Neighbourhood(models.Model):
     # def update_neighbourhood(self):
     #     pass
 
-class Location(models.Model):
-    user = models.ForeignKey(User,on_delete = models.CASCADE)
-    name = models.CharField(max_length = 50)
 
 
 class Business(models.Model):
