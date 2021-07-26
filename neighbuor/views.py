@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import BusinessForm,PostForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Post,Neighbourhood
+from .models import Profile,Post,Neighbourhood,Healthinfo,Policeinfo
 # Create your views here.
 def index(request):
     neighbour=Neighbourhood.objects.all()
@@ -18,6 +18,8 @@ def index(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
+    health = Healthinfo.objects.all()
+    police = Policeinfo.objects.all()
     Profile.objects.get_or_create(user=request.user)
     neighbour=Neighbourhood.objects.all()
     
@@ -35,6 +37,8 @@ def profile(request, username):
         'user_form': user_form,
         'prof_form': prof_form,
         'neighbour': neighbour,
+        'health': health,
+        'police':police,
         
     }
     return render(request, 'profile.html', params)
