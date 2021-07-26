@@ -1,24 +1,24 @@
 from django.shortcuts import render,redirect
-from .forms import BusinessForm,PostForm,LocationForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
+from .forms import BusinessForm,PostForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Post,Location
+from .models import Profile,Post
 # Create your views here.
 def index(request):
     posts = Post.objects.all()
-    Profile.objects.get_or_create(user=request.user)
-    if request.method == 'POST':
-        form =LocationForm(request.POST)
-        if form.is_valid():
-            location = form.save(commit=False)
-            location.save()
-            return redirect('/')
+    # Profile.objects.get_or_create(user=request.user)
+    # if request.method == 'POST':
+    #     form =LocationForm(request.POST)
+    #     if form.is_valid():
+    #         location = form.save(commit=False)
+    #         location.save()
+    #         return redirect('/')
 
-    else:
-        form = LocationForm()
-        params = {
+    # else:
+    #     form = LocationForm()
+    params = {
         'posts': posts,
-        'form': form,
+        # 'form': form,
         
     }
 
@@ -47,9 +47,10 @@ def profile(request, username):
 
 def update_neighbourhood(request):
     if request.method == 'POST':
-        form = NeighbourhoodForm(request.POST, request.FILES, instance=request.user.profile)
+        form = NeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
             update = form.save(commit=False)
+            update.user = request.user.profile
             update.save()
             return redirect('/',)
     else:

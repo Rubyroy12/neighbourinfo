@@ -28,11 +28,11 @@
                 </li>
                 <div class="col-sm-6 col-md-6" style="display: inline-flex; margin-right: 50px;">
                     {% if user.is_authenticated %}
-               
-            
+
+
                     <div class="instaicon like" style="display: inline;" class="dropdown">
-                        <a href="#" class="dropdown-toggle btn btn-default"
-                            data-toggle="dropdown" role="button" aria-expanded="false">New Post</a>
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                            aria-expanded="false">New Post</a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{% url 'profile' user.username %}" style="color: inherit;">
@@ -44,20 +44,28 @@
                             <li>
                                 <a href="/accounts/password_change" style="color: inherit;">Change Password</a>
                             </li>
-                            
+
                             <li>
                                 <a href="/accounts/logout" style="color: inherit;">Logout</a>
                             </li>
                         </ul>
                     </div>
-            
+
                     {% else %}
                     <a class='btn btn-default' href="/accounts/login">
                         <p>Login</p>
                     </a>
                     {% endif %}
-                </div>  
+                </div>
+
             </ul>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>change neighbohood</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
         </div>
     </nav>
 

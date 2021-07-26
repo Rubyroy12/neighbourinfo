@@ -41,14 +41,14 @@ class Profile(models.Model):
         return cls.objects.filter(user__username__icontains=name).all()
    
   
-class Location(models.Model):
-    user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name='location',null = True)
-    name = models.CharField(max_length = 50)
+# class Location(models.Model):
+#     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name='location',null = True)
+#     name = models.CharField(max_length = 50)
 
 class Neighbourhood(models.Model):
-    user = models.ForeignKey(User,on_delete = models.CASCADE,related_name = 'neighbour')
+    user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'neighbour')
     name = models.CharField(max_length = 50)
-    location = models.ForeignKey('Location',on_delete = models.CASCADE,null = True)
+    location = models.CharField(max_length = 50)
     occupants = models.IntegerField(null=True)
 
     
