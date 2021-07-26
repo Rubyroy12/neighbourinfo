@@ -115,6 +115,16 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Healthinfo(models.Model):
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'health')
+    facility_name= models.CharField(max_length = 100)
+    facility_email= models.CharField(max_length =50)
+
+class Policeinfo(models.Model):
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'police')
+    facility_name= models.CharField(max_length = 100)
+    facility_email= models.CharField(max_length =50)
+    
 
 
 
