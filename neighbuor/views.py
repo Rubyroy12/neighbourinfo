@@ -77,10 +77,10 @@ def search_results(request):
         searched_business= Business.search_business(search_term)
         message=f"{search_term}"
 
-        return render(request,'index.html',{"message":message,"business":searched_business})
+        return render(request,'search.html',{"message":message,"business":searched_business})
     else:
 
         message = "You have not searched any business"
 
-        return render(request,'index.html',{"message":message})
+        return render(request,'search.html',{"message":message})
     

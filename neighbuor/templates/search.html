@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{%block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        {%if business %}
+        <h2>Found {{ business |length }} of searched term {{message}}</h2>
+
+        {%else %}
+        <div>
+            <h2 class="text-center"> Found 0 business for the search term {{message}}</h2>
+        </div>
+
+
+        {% endif %}
+
+    </div>
+
+    <div class="container-row">
+
+        {% if business %}
+        {% for business in business %}
+        <div class="col-md-7">
+            <h1 class="text-underline">{{business.name}}</h1>
+
+            <img src="{{business.image.url}}" alt="" height="300px" width="300px">
+            <p class="text-justify">{{business.email}}</p>
+
+
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+    <hr>
+
+  
+
+</div>
+</div>
+
+
+</div>
+
+{%endblock%}
