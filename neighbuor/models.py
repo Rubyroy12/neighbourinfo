@@ -41,14 +41,14 @@ class Profile(models.Model):
         return cls.objects.filter(user__username__icontains=name).all()
    
   
-# class Location(models.Model):
-#     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name='location',null = True)
-#     name = models.CharField(max_length = 50)
+class Location(models.Model):
+ 
+    name = models.CharField(max_length = 50)
 
 class Neighbourhood(models.Model):
     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'neighbour')
     name = models.CharField(max_length = 50)
-    location = models.CharField(max_length = 50)
+    location = models.ForeignKey(Location, on_delete = models.CASCADE)
     occupants = models.IntegerField(null=True)
 
     
@@ -59,10 +59,10 @@ class Neighbourhood(models.Model):
     def delete_neighbourhood(self):
         self.delete()
 
-    # @classmethod
-    # def find_neighbourhood(neighbourhod_id):
-    #     neighbour= Neighbourhood.objects.filter(title__icontains=)
-    #     return neighbour
+    @classmethod
+    def find_neighbourhood(cls,neighbour_id):
+        neighbour= Neighbourhood.objects.get(id=neighbour_id)
+        return neighbour
     # @classmethod
     # def update_neighbourhood(self):
     #     pass
@@ -79,7 +79,7 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
 
-    def find_business(business_id,self):
+    def find_business(cls,business_id):
         business = Business.objects.get(id=business_id)
         return business
 

@@ -3,9 +3,9 @@ from .forms import BusinessForm,PostForm,UpdateUserProfileForm,UpdateUserForm,Ne
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile,Post,Neighbourhood,Healthinfo,Policeinfo,Business
-def index(request):
+def index(request,id):
     neighbour=Neighbourhood.objects.all()
-    posts = Post.objects.all()
+    posts = Post.objects.get(id=id)
     business = Business.objects.all()
 
     params = {
