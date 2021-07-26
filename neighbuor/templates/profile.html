@@ -8,45 +8,65 @@
         <div class="col-md-7" style="margin-top:10px">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div class="navbar-nav">
-                    
-                    <a class="nav-item nav-link" href="{% url 'neighbor'%}">Update neighbohood</a>
-                    <a class="nav-item nav-link" href="#">Make New Post</a>
-                   
-                  </div>
+                    <div class="navbar-nav">
+
+                        <a class="nav-item nav-link" href="{% url 'neighbor'%}">Update neighbohood</a>
+                        <a class="nav-item nav-link" href="#">Make New Post</a>
+
+                    </div>
                 </div>
-              </nav>
+            </nav>
             <div class="media-body">
 
                 <div class="details">
                     <div class="profile" style="margin:20px;">
-                        <h5 >{{ user.username}}</h5><br>
-                        <p>{{user.email}}</p>
+                        <div class="data d-flex     ">
+                            <div class="name d-flex flex-column">
+                                <h5>Name:{{ user.username}}</h5><br>
+                                <p>Email: {{user.email}}</p>
+                                <a class="btn btn-sm btn-outline-primary mr-3" data-toggle="modal"
+                                    data-target=".bd-example-modal-md"><strong>Update
+                                        Profile</strong></a>
+                            </div>
+
+                        </div>
                         <br>
                         <hr>
+                  <div class="row">
+                      <div class="col-sm-5">
                         <h4>Facilities info</h4>
                         {% for health in health%}
-                        <p>{{health.facility_name}}</p>
-                        <p>{{health.facility_email}}</p>
+                        <p>Name: {{health.facility_name}}</p>
+                        <p>Email:{{health.facility_email}}</p>
                         {% endfor %}
-                        
 
-                        
+                      </div>
+                      <div class="col-sm-5">
+                        <h4>Police Autyhority info</h4>
+                        {% for police in police%}
+                        <p>Name:{{police.facility_name}}</p>
+                        <p>Email:{{police.facility_email}}</p>
+                        {% endfor %}
 
-                        <a class="btn btn-sm btn-outline-primary mr-3" data-toggle="modal"
-                            data-target=".bd-example-modal-md"><strong>Update
-                                Profile</strong></a>
+                      </div>
+
+                  </div>
+
+
+
+
                     </div>
 
 
                     <p style="margin-left: 20px;">{{ user.profile.}}</p>
                 </div>
                 <hr>
-               
+
 
             </div>
             <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container-fluid">
 
-    <div class="head" >
+    <div class="head">
 
 
 
@@ -11,19 +11,22 @@
     </div>
     <div>
         <hr>
-     
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-6">
 
                 {% for post in posts %}
                 <div class="card">
-                    <div class="card-title"><h2>{{post.title}}</h2></div>
+                    <div class="card-title">
+                        <h2>{{post.title}}</h2>
+                    </div>
                     <img src="{{ post.image.url}}" alt="" height="300px" width="400px">
 
                     <div class="card-body">
-                        
-                        <p class="card-text">{{ post.posted | timesince }} <em>By: </em> <strong>{{ post.user.user.username }}</strong></p>
+
+                        <p class="card-text">{{ post.posted | timesince }} <em>By: </em>
+                            <strong>{{ post.user.user.username }}</strong></p>
 
                         <p>{{post.post}}</p>
 
@@ -36,15 +39,16 @@
             <div class="col-md-4">
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search business" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search business"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
-                  </nav>
-                  <hr>
+                </nav>
+                <hr>
                 {% for business in business %}
                 <div class="card">
-                    <div class="card-title">{{business.name}}</div>
                     <div class="card-body">
+                        <div class="card-title" style="text-decoration: underline;">{{business.name}}</div>
                         <img src="{{business.image.url}}" alt="{{business.name}}" height="80px" width="150px">
                         <h5>Email:</h5>
                         <p>{{business.email}}</p>
