@@ -99,6 +99,7 @@ class Business(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'post')
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'post')
     title=models.CharField(max_length= 100)
     post= models.TextField(max_length=1000)
     image = CloudinaryField('image')

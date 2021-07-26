@@ -60,10 +60,11 @@
 
             </ul>
             <select class="form-select" aria-label="Default select example">
-                <option selected>change neighbohood</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>change Location</option>
+                {% for neighbour in neighbour %}
+                <option value="1">{{ neighbour.location}}</option>
+                {%endfor%}
+
             </select>
 
         </div>

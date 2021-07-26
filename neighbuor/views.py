@@ -2,23 +2,15 @@ from django.shortcuts import render,redirect
 from .forms import BusinessForm,PostForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Post
+from .models import Profile,Post,Neighbourhood
 # Create your views here.
 def index(request):
+    neighbour=Neighbourhood.objects.all()
     posts = Post.objects.all()
-    # Profile.objects.get_or_create(user=request.user)
-    # if request.method == 'POST':
-    #     form =LocationForm(request.POST)
-    #     if form.is_valid():
-    #         location = form.save(commit=False)
-    #         location.save()
-    #         return redirect('/')
 
-    # else:
-    #     form = LocationForm()
     params = {
         'posts': posts,
-        # 'form': form,
+        'neighbour':neighbour,
         
     }
 
@@ -27,6 +19,7 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
     Profile.objects.get_or_create(user=request.user)
+    neighbour=Neighbourhood.objects.all()
     
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -41,6 +34,7 @@ def profile(request, username):
     params = {
         'user_form': user_form,
         'prof_form': prof_form,
+        'neighbour': neighbour,
         
     }
     return render(request, 'profile.html', params)
