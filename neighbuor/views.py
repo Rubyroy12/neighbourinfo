@@ -74,7 +74,7 @@ def search_results(request):
 
     if 'business' in request.GET and request.GET['business']:
         search_term = request.GET.get('business')
-        searched_business= Business.search_by_category(search_term)
+        searched_business= Business.search_business(search_term)
         message=f"{search_term}"
 
         return render(request,'index.html',{"message":message,"business":searched_business})

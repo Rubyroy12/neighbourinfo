@@ -38,11 +38,9 @@
             </div>
             <div class="col-md-4">
                 <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search business"
-                            action="{% url 'search_results' %}" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
-                            name="business">Search</button>
+                    <form class="form-inline my-2 my-lg-0 navbar-form" role="search" action="{% url 'search_results' %}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="business">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </nav>
                 <hr>

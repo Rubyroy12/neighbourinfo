@@ -90,7 +90,7 @@ class Business(models.Model):
 
     @classmethod
     def search_business(cls, search_term):
-        business= cls.objects.filter(id__icontains=search_term)
+        business= cls.objects.filter(name__icontains=search_term)
         return business
     
     def __str__(self):
