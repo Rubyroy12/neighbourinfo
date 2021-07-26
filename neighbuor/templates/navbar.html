@@ -28,14 +28,11 @@
                 </li>
                 <div class="col-sm-6 col-md-6" style="display: inline-flex; margin-right: 50px;">
                     {% if user.is_authenticated %}
-                   
-                  
-                  
-                   
+               
             
                     <div class="instaicon like" style="display: inline;" class="dropdown">
                         <a href="#" class="dropdown-toggle btn btn-default"
-                            data-toggle="dropdown" role="button" aria-expanded="false">Submit</a>
+                            data-toggle="dropdown" role="button" aria-expanded="false">New Post</a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{% url 'profile' user.username %}" style="color: inherit;">
