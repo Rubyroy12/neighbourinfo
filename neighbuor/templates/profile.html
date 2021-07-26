@@ -23,12 +23,19 @@
             <div class="media-body">
 
                 <div class="details">
-                    <div class="profile">
-                        <h5 style="margin-right: 20px; margin-left: 20px;">{{ user.username}}</h5><br>
+                    <div class="profile" style="margin:20px;">
+                        <h5 >{{ user.username}}</h5><br>
                         <p>{{user.email}}</p>
                         <br>
+                        <hr>
+                        <h4>Facilities info</h4>
+                        {% for health in health%}
+                        <p>{{health.facility_name}}</p>
+                        <p>{{health.facility_email}}</p>
+                        {% endfor %}
+                        
 
-                        <p>{{user.profile.location}}</p>
+                        
 
                         <a class="btn btn-sm btn-outline-primary mr-3" data-toggle="modal"
                             data-target=".bd-example-modal-md"><strong>Update

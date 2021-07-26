@@ -70,10 +70,11 @@ class Neighbourhood(models.Model):
 
 
 class Business(models.Model):
-    user=models.ForeignKey(User,on_delete = models.CASCADE)
+    
     name = models.CharField(max_length=50)
     neighbourhood= models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
     email= models.EmailField(max_length=50)
+    image = CloudinaryField('image')
 
     def delete_business(self):
         self.delete()
@@ -99,7 +100,7 @@ class Business(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'post')
-    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'post')
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'post',null = True)
     title=models.CharField(max_length= 100)
     post= models.TextField(max_length=1000)
     image = CloudinaryField('image')
@@ -116,12 +117,12 @@ class Post(models.Model):
         return self.title
 
 class Healthinfo(models.Model):
-    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'health')
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'health',null = True)
     facility_name= models.CharField(max_length = 100)
     facility_email= models.CharField(max_length =50)
 
 class Policeinfo(models.Model):
-    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'police')
+    neighbour = models.ForeignKey(Neighbourhood,on_delete = models.CASCADE,related_name = 'police',null = True)
     facility_name= models.CharField(max_length = 100)
     facility_email= models.CharField(max_length =50)
     
