@@ -14,7 +14,7 @@ class UpdateUserForm(forms.ModelForm):
 class NeighbourhoodForm(forms.ModelForm):
     class Meta: 
         model= Neighbourhood
-        fields = ('name', 'location','occupants')
+        fields = ('name','occupants')
 
 class BusinessForm(forms.ModelForm):
     class Meta: 

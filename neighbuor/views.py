@@ -2,15 +2,14 @@ from django.shortcuts import render,redirect
 from .forms import BusinessForm,PostForm,UpdateUserProfileForm,UpdateUserForm,NeighbourhoodForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Post,Neighbourhood,Healthinfo,Policeinfo,Business
-def index(request,id):
-    neighbour=Neighbourhood.objects.all()
-    posts = Post.objects.get(id=id)
+from .models import Profile,Post,Neighbourhood,Healthinfo,Policeinfo,Business,Location
+def index(request):
+    location=Location.objects.all()
     business = Business.objects.all()
 
     params = {
         'posts': posts,
-        'neighbour':neighbour,
+        'location':location,
         'business': business,
         
     }
@@ -69,4 +68,7 @@ def newpost(request):
         form= PostForm()
    
     return render(request, 'newpost.html', {'form': form})
-        
+
+def posts(request,id):
+    posts = Post.objects.get(id=id)
+    return render(request, 'posts.html', {'post':posts})

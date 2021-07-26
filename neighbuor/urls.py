@@ -8,7 +8,8 @@ urlpatterns=[
     path('',views.index,name = 'index'),
     path('accounts/profile/<str:username>/',views.profile, name = 'profile'),
     path('neighbuor/',views.update_neighbourhood, name='neighbor'),
-    path('newpost/', views.newpost, name = 'post')
+    path('newpost/', views.newpost, name = 'post'),
+    path('posts/<id>',views.posts, name = 'posts')
    
 ]
 if settings.DEBUG:

@@ -42,8 +42,7 @@ class Profile(models.Model):
    
   
 class Location(models.Model):
- 
-    name = models.CharField(max_length = 50)
+     name = models.CharField(max_length = 50)
 
 class Neighbourhood(models.Model):
     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'neighbour')

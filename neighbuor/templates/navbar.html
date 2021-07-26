@@ -61,8 +61,8 @@
             </ul>
             <select class="form-select" aria-label="Default select example">
                 <option selected>change Location</option>
-                {% for neighbour in neighbour %}
-                <option value="1">{{ neighbour.location}}</option>
+                {% for location in location %}
+                <option value="1">{{ location.name}}</option>
                 {%endfor%}
 
             </select>
