@@ -47,7 +47,7 @@ class Location(models.Model):
 class Neighbourhood(models.Model):
     user = models.ForeignKey(Profile,on_delete = models.CASCADE,related_name = 'neighbour')
     name = models.CharField(max_length = 50)
-    location = models.ForeignKey(Location, on_delete = models.CASCADE)
+    location = models.ForeignKey(Location, on_delete = models.CASCADE,null = True)
     occupants = models.IntegerField(null=True)
 
     
@@ -79,7 +79,7 @@ class Business(models.Model):
         self.delete()
 
     def find_business(cls,business_id):
-        business = Business.objects.get(id=business_id)
+        business = Business.objects.filter(id=business_id)
         return business
 
 
@@ -90,7 +90,7 @@ class Business(models.Model):
 
     @classmethod
     def search_business(cls, search_term):
-        business= cls.objects.filter(title__icontains=search_term)
+        business= cls.objects.filter(id__icontains=search_term)
         return business
     
     def __str__(self):

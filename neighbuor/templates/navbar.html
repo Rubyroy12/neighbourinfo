@@ -26,6 +26,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Neighbuorhood</a>
                 </li>
+             
                 <div class="col-sm-6 col-md-6" style="display: inline-flex; margin-right: 50px;">
                     {% if user.is_authenticated %}
 
@@ -39,7 +40,7 @@
                                     </span>Profile</a>
                             </li>
                             <li>
-                                <a href="{%url 'post'%}" style="color: inherit;">Make new post</a>
+                                <a href="{%url 'newpost'%}" style="color: inherit;">Make new post</a>
                             </li>
                             <li>
                                 <a href="/accounts/password_change" style="color: inherit;">Change Password</a>

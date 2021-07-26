@@ -6,6 +6,7 @@ from .models import Profile,Post,Neighbourhood,Healthinfo,Policeinfo,Business,Lo
 def index(request):
     location=Location.objects.all()
     business = Business.objects.all()
+    posts = Post.objects.all()
 
     params = {
         'posts': posts,
@@ -63,12 +64,23 @@ def newpost(request):
             post = form.save(commit=False)
             post.user = request.user.profile
             post.save()
-            return redirect('/',)
+            return redirect('/')
     else:
         form= PostForm()
    
     return render(request, 'newpost.html', {'form': form})
 
-def posts(request,id):
-    posts = Post.objects.get(id=id)
-    return render(request, 'posts.html', {'post':posts})
+def search_results(request):
+
+    if 'business' in request.GET and request.GET['business']:
+        search_term = request.GET.get('business')
+        searched_business= Business.search_by_category(search_term)
+        message=f"{search_term}"
+
+        return render(request,'index.html',{"message":message,"business":searched_business})
+    else:
+
+        message = "You have not searched any business"
+
+        return render(request,'index.html',{"message":message})
+    
